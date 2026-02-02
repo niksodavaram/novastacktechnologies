@@ -11,7 +11,7 @@ import CaseStudies from "./pages/CaseStudies";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
-import Insights from "./pages/INsights";
+import Insights from "./pages/insights";
 
 const queryClient = new QueryClient();
 
