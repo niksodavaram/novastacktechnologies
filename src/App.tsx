@@ -10,6 +10,8 @@ import Academy from "./pages/Academy";
 import CaseStudies from "./pages/CaseStudies";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import Insights from "./pages/INsights";
 
 const queryClient = new QueryClient();
 
@@ -27,7 +29,8 @@ const App = () => (
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/insights" element={<Insights />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

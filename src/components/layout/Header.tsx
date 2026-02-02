@@ -8,6 +8,10 @@ const navLinks = [
   { href: "/security", label: "Security" },
   { href: "/academy", label: "Academy" },
   { href: "/contact", label: "Contact" },
+  { href: "/About", label: "About" },
+  { href: "/Insights", label: "Insights" },
+  
+  
 ];
 
 export const Header = () => {
