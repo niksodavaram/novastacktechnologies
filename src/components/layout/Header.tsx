@@ -25,7 +25,7 @@ export const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <span className="text-xl md:text-2xl font-bold tracking-tight text-foreground">
-              Nova<span className="text-primary">stack</span>
+              Nova<span className="text-primary">stack</span> <span>Techno</span><span className="text-primary">logies</span>
             </span>
           </Link>
 

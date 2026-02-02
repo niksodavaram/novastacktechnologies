@@ -93,6 +93,10 @@ const blogPosts = [
 ];
 
 const Insights = () => {
+  // Extract featured post for easier access
+  const featuredPost = blogPosts[0];
+  const FeaturedIcon = featuredPost.icon;
+
   return (
     <Layout>
       <PageHeader
@@ -111,32 +115,32 @@ const Insights = () => {
               </span>
             </div>
             
-            <div className={`p-8 md:p-12 rounded-3xl ${blogPosts[0].bgColor} border ${blogPosts[0].borderColor} hover:scale-[1.02] transition-all duration-500`}>
+            <div className={`p-8 md:p-12 rounded-3xl ${featuredPost.bgColor} border ${featuredPost.borderColor} hover:scale-[1.02] transition-all duration-500`}>
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-2">
                   <div className="flex items-center gap-3 mb-4">
-                    <blogPosts[0].icon className={`w-8 h-8 ${blogPosts[0].color}`} />
-                    <span className={`px-3 py-1 text-xs rounded-full ${blogPosts[0].bgColor} ${blogPosts[0].color} border ${blogPosts[0].borderColor} font-semibold`}>
-                      {blogPosts[0].category}
+                    <FeaturedIcon className={`w-8 h-8 ${featuredPost.color}`} />
+                    <span className={`px-3 py-1 text-xs rounded-full ${featuredPost.bgColor} ${featuredPost.color} border ${featuredPost.borderColor} font-semibold`}>
+                      {featuredPost.category}
                     </span>
                   </div>
                   
                   <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                    {blogPosts[0].title}
+                    {featuredPost.title}
                   </h2>
                   
                   <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                    {blogPosts[0].excerpt}
+                    {featuredPost.excerpt}
                   </p>
 
                   <div className="flex items-center gap-6 text-sm text-muted-foreground mb-6">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4" />
-                      <span>{new Date(blogPosts[0].date).toLocaleDateString('en-AU', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                      <span>{new Date(featuredPost.date).toLocaleDateString('en-AU', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4" />
-                      <span>{blogPosts[0].readTime}</span>
+                      <span>{featuredPost.readTime}</span>
                     </div>
                   </div>
 
@@ -152,9 +156,9 @@ const Insights = () => {
                       Key Topics Covered
                     </h3>
                     <ul className="space-y-2">
-                      {blogPosts[0].highlights.map((highlight, idx) => (
+                      {featuredPost.highlights.map((highlight, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <div className={`w-1.5 h-1.5 rounded-full ${blogPosts[0].color} ${blogPosts[0].bgColor} border ${blogPosts[0].borderColor} mt-1.5 flex-shrink-0`} />
+                          <div className={`w-1.5 h-1.5 rounded-full ${featuredPost.color} ${featuredPost.bgColor} border ${featuredPost.borderColor} mt-1.5 flex-shrink-0`} />
                           <span>{highlight}</span>
                         </li>
                       ))}
@@ -174,60 +178,63 @@ const Insights = () => {
             <h2 className="text-3xl font-bold mb-12">Latest Articles</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {blogPosts.slice(1).map((post) => (
-                <article 
-                  key={post.id}
-                  className={`group p-8 rounded-2xl ${post.bgColor} border ${post.borderColor} hover:scale-105 transition-all duration-500 cursor-pointer`}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-12 h-12 rounded-xl ${post.bgColor} border ${post.borderColor} flex items-center justify-center`}>
-                      <post.icon className={`w-6 h-6 ${post.color}`} />
-                    </div>
-                    <span className={`px-3 py-1 text-xs rounded-full ${post.bgColor} ${post.color} border ${post.borderColor} font-semibold`}>
-                      {post.category}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
-
-                  <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-                    {post.excerpt}
-                  </p>
-
-                  {/* Meta Info */}
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground mb-6">
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>{new Date(post.date).toLocaleDateString('en-AU', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5" />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {post.tags.map((tag) => (
-                      <span 
-                        key={tag}
-                        className="px-2 py-1 text-xs rounded-md bg-muted/50 border border-border flex items-center gap-1"
-                      >
-                        <Tag className="w-3 h-3" />
-                        {tag}
+              {blogPosts.slice(1).map((post) => {
+                const PostIcon = post.icon;
+                return (
+                  <article 
+                    key={post.id}
+                    className={`group p-8 rounded-2xl ${post.bgColor} border ${post.borderColor} hover:scale-105 transition-all duration-500 cursor-pointer`}
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`w-12 h-12 rounded-xl ${post.bgColor} border ${post.borderColor} flex items-center justify-center`}>
+                        <PostIcon className={`w-6 h-6 ${post.color}`} />
+                      </div>
+                      <span className={`px-3 py-1 text-xs rounded-full ${post.bgColor} ${post.color} border ${post.borderColor} font-semibold`}>
+                        {post.category}
                       </span>
-                    ))}
-                  </div>
+                    </div>
 
-                  {/* Read More Link */}
-                  <div className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-4 transition-all">
-                    <span>Read Article</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
-                </article>
-              ))}
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+
+                    {/* Meta Info */}
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground mb-6">
+                      <div className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>{new Date(post.date).toLocaleDateString('en-AU', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5" />
+                        <span>{post.readTime}</span>
+                      </div>
+                    </div>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {post.tags.map((tag) => (
+                        <span 
+                          key={tag}
+                          className="px-2 py-1 text-xs rounded-md bg-muted/50 border border-border flex items-center gap-1"
+                        >
+                          <Tag className="w-3 h-3" />
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Read More Link */}
+                    <div className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-4 transition-all">
+                      <span>Read Article</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </div>
