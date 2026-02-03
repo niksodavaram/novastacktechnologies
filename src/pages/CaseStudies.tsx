@@ -84,6 +84,39 @@ const caseStudies = [
       "Integration with Cloudflare Zero Trust for edge security",
     ]
   },
+  
+  {
+    id: 4,
+    title: "Green Intelligence System (GIS)",
+    subtitle: "India's First AI-Driven Landscaping Operating System",
+    category: "Field Service Management & AI",
+    client: "Green Leaves Plantscapes, Hyderabad, India",
+    challenge: "Traditional Indian landscaping company losing ₹8-12 lakhs annually to manual operations, fake travel claims, and site rework. Unable to compete for premium corporate contracts requiring digital accountability.",
+    solution: "Complete digital transformation with ERPNext-based sovereign operating system featuring GPS-verified attendance, AI photo analysis for site auditing, offline-capable mobile apps, automated expense processing, and CRM integration—all hosted on private Indian cloud with Australian NV1-grade security.",
+    results: [
+      "₹20+ lakhs total annual value delivered through cost savings and revenue growth opportunities",
+      "95% reduction in fraudulent travel and attendance claims via GPS verification",
+      "40% reduction in supervisor administrative time through AI automation",
+      "60% decrease in site rework costs with real-time AI photo auditing",
+      "12-18 month ROI payback period with ongoing profit generation",
+      "First-mover advantage as Telangana's only AI-driven landscaping company"
+    ],
+    technologies: [
+      "ERPNext (Python)",
+      "React Native Mobile Apps",
+      "Qwen 2.5 Coder (Local AI)",
+      "PostgreSQL Database",
+      "Indian Cloud Infrastructure",
+      "GPS & Location Services",
+      "Computer Vision AI",
+      "OCR for Bill Processing"
+    ],
+    metrics: [
+      { label: "Annual Value", value: "₹20L+" },
+      { label: "Fraud Reduction", value: "95%" },
+      { label: "ROI Payback", value: "12-18m" },
+    ],
+  },
 ];
 
 const CaseStudies = () => {

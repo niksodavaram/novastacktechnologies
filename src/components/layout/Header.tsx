@@ -1,21 +1,28 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/capabilities", label: "Capabilities" },
   { href: "/security", label: "Security" },
   { href: "/academy", label: "Academy" },
   { href: "/contact", label: "Contact" },
   { href: "/About", label: "About" },
   { href: "/Insights", label: "Insights" },
-  
-  
+];
+
+const solutionsSubmenu = [
+  { href: "/india-solutions", label: "India Solutions" },
+  { href: "/fintech", label: "Fintech & Banking" },
+  { href: "/project-management", label: "Project Management" }
 ];
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
   const location = useLocation();
 
   return (
@@ -44,6 +51,35 @@ export const Header = () => {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Solutions Dropdown - Desktop */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setSolutionsOpen(true)}
+              onMouseLeave={() => setSolutionsOpen(false)}
+            >
+              <button
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 flex items-center gap-1"
+              >
+                Solutions
+                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${solutionsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {/* Dropdown Menu */}
+              {solutionsOpen && (
+                <div className="absolute top-full left-0 mt-2 w-56 bg-background/95 backdrop-blur-lg border border-border/50 rounded-lg shadow-xl py-2 animate-fade-in">
+                  {solutionsSubmenu.map((item) => (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      className="block px-4 py-2 text-sm text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors duration-200"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* CTA Button */}
@@ -83,6 +119,36 @@ export const Header = () => {
                   {link.label}
                 </Link>
               ))}
+              
+              {/* Solutions Dropdown - Mobile */}
+              <div>
+                <button
+                  onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
+                  className="text-base font-medium text-muted-foreground hover:text-primary transition-colors duration-300 flex items-center gap-1 w-full"
+                >
+                  Solutions
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileSolutionsOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {mobileSolutionsOpen && (
+                  <div className="pl-4 mt-2 flex flex-col gap-2">
+                    {solutionsSubmenu.map((item) => (
+                      <Link
+                        key={item.href}
+                        to={item.href}
+                        onClick={() => {
+                          setIsOpen(false);
+                          setMobileSolutionsOpen(false);
+                        }}
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
               <Button variant="hero" className="mt-4" asChild>
                 <a href="https://portal.novastack.com.au" target="_blank" rel="noopener noreferrer">
                   Client Portal

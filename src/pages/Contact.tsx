@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { Mail, MapPin, Building, ArrowRight, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Building, ArrowRight, CheckCircle, Phone, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -130,6 +130,33 @@ const Contact = () => {
             {/* Contact Information */}
             <div className="lg:pl-12">
               <div className="space-y-8">
+                {/* Company Details */}
+                <div className="p-6 rounded-xl bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/10 border border-primary/30">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <Building className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold mb-3 text-lg">NovaStack Technologies PTY LTD</h3>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start gap-2">
+                          <span className="text-muted-foreground min-w-[60px]">ABN:</span>
+                          <span className="font-mono">59 690 831 675</span>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="text-muted-foreground min-w-[60px]">Status:</span>
+                          <span className="text-green-500 font-medium">Active, GST Registered</span>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="text-muted-foreground min-w-[60px]">Location:</span>
+                          <span>VIC 3429, Australia</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email */}
                 <div className="p-6 rounded-xl bg-card border border-border">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -143,55 +170,150 @@ const Contact = () => {
                       >
                         consulting@novastack.com.au
                       </a>
+                      <p className="text-xs text-muted-foreground mt-2">
+                        For general inquiries and project discussions
+                      </p>
                     </div>
                   </div>
                 </div>
 
+                {/* Website */}
+                <div className="p-6 rounded-xl bg-card border border-border">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0">
+                      <Globe className="w-6 h-6 text-secondary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Website</h3>
+                      <a 
+                        href="https://www.novastack.com.au" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                      >
+                        www.novastack.com.au
+                      </a>
+                      <p className="text-xs text-muted-foreground mt-2">
+                        Case studies, capabilities, and technical resources
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Location */}
                 <div className="p-6 rounded-xl bg-card border border-border">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <MapPin className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-2">Location</h3>
-                      <p className="text-muted-foreground">Australia</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-6 rounded-xl bg-card border border-border">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0">
-                      <Building className="w-6 h-6 text-secondary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-2">Defence Tenders</h3>
-                      <p className="text-muted-foreground text-sm">
-                        For Defence procurement, we partner with Keane Consulting 
-                        as a DISP-accredited prime.
+                      <h3 className="font-semibold mb-2">Operating Locations</h3>
+                      <div className="space-y-1 text-sm text-muted-foreground">
+                        <p>🇦🇺 Australia (Primary)</p>
+                        <p>🇮🇳 India (Delivery Teams)</p>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-2">
+                        Australian-led engineering with global delivery capability
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Why Contact Us */}
+                {/* Defence Partnerships */}
+                <div className="p-6 rounded-xl bg-card border border-border">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                      <Building className="w-6 h-6 text-red-500" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Defence Tenders</h3>
+                      <p className="text-muted-foreground text-sm mb-2">
+                        For Defence procurement, we partner with Keane Consulting 
+                        as a DISP-accredited prime contractor.
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        NV1-cleared principals • ASD Essential Eight ML3 compliance
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* What to Expect */}
                 <div className="mt-12">
                   <h3 className="font-semibold mb-4">What to Expect</h3>
                   <ul className="space-y-3">
                     {[
                       "Response within 24 hours",
                       "NDA available on request",
-                      "Secure communication options",
-                      "No obligation consultation",
+                      "Secure communication options for classified discussions",
+                      "No obligation technical consultation",
+                      "Transparent pricing and milestone-based delivery",
+                      "Australian business hours (AEDT/AEST)",
                     ].map((item, index) => (
-                      <li key={index} className="flex items-center gap-3 text-sm text-muted-foreground">
-                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                      <li key={index} className="flex items-start gap-3 text-sm text-muted-foreground">
+                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
+
+                {/* Trust Indicators */}
+                <div className="mt-8 p-6 rounded-xl bg-muted/30 border border-border">
+                  <h3 className="font-semibold mb-3 text-sm">Trust & Compliance</h3>
+                  <div className="grid grid-cols-2 gap-3 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="w-3 h-3 text-green-500" />
+                      <span>ABN Verified</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="w-3 h-3 text-green-500" />
+                      <span>GST Registered</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="w-3 h-3 text-green-500" />
+                      <span>NV1 Cleared</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="w-3 h-3 text-green-500" />
+                      <span>ISO 27001 Aligned</span>
+                    </div>
+                  </div>
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* India Operations Note */}
+      <section className="py-20 md:py-32 bg-card border-y border-border">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">
+              Serving Clients in Australia and India
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              While NovaStack Technologies is an Australian-registered company (ABN 59 690 831 675), 
+              we maintain delivery teams in India to serve the growing market for sovereign, 
+              AI-enabled business systems.
+            </p>
+            <p className="text-muted-foreground mb-8">
+              <strong>For Indian clients:</strong> We provide the same Australian NV1-grade security 
+              standards and engineering excellence, with local teams for implementation, training, 
+              and ongoing support. All data remains sovereign within Indian cloud infrastructure.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button variant="hero" size="lg" asChild>
+                <a href="mailto:consulting@novastack.com.au">
+                  Contact Australia Office <ArrowRight className="ml-2 w-4 h-4" />
+                </a>
+              </Button>
+              <Button variant="hero-ghost" size="lg" asChild>
+                <a href="mailto:consulting@novastack.com.au">
+                  Inquire About India Projects
+                </a>
+              </Button>
             </div>
           </div>
         </div>

@@ -12,6 +12,9 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Insights from "./pages/insights";
+import IndiaSolutions from "./pages/IndiaSolutions";
+import FintechSolutions from "./pages/FintechSolutions";
+import ProjectManagement from "./pages/ProjectManagement";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +34,11 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="/about" element={<About />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/india-solutions" element={<IndiaSolutions />} />
+          <Route path="/fintech" element={<FintechSolutions />} />
+          <Route path="/project-management" element={<ProjectManagement />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
